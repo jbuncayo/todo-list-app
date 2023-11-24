@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Check if the input is not empty
     if (taskText !== "") {
+      // Check if the task is already in the list
+      if (tasks.some(task => task.text.toLowerCase() === taskText.toLowerCase())) {
+        // Show the notification
+        showNotification("Task already in the list!");
+        return;
+      }
+
       // Create a new task object
       const newTask = {
         id: Date.now(),
@@ -162,5 +169,17 @@ document.addEventListener("DOMContentLoaded", function () {
     taskElement.addEventListener("animationend", function () {
       taskElement.classList.remove("celebrate");
     });
+  }
+
+  // Function to show the notification
+  function showNotification(message) {
+    const notificationElement = document.getElementById("notification");
+    notificationElement.innerText = message;
+    notificationElement.style.display = "block";
+
+    // Hide the notification after 3 seconds
+    setTimeout(() => {
+      notificationElement.style.display = "none";
+    }, 3000);
   }
 });
