@@ -240,3 +240,28 @@ main {
     transform: translateY(-20px);
   }
 }
+
+#notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ff5252;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+  z-index: 2;
+  animation: slideInRight 0.5s ease;
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
